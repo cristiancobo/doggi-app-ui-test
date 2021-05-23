@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:e2e:ui": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/cristiancobo/doggi-app-ui-test/issues"
   },
-  "homepage": "https://github.com/cristiancobo/doggi-app-ui-test#readme"
+  "homepage": "https://github.com/cristiancobo/doggi-app-ui-test#readme",
+  "dependencies": {
+    "cypress": "^7.3.0"
+  }
 }
