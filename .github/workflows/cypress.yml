@@ -1,0 +1,26 @@
+name: E2E ui tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12
+      uses: actions/setup-node@v2
+      with:
+        node-version: 12.x
+    - run: npm ci
+    - name: E2E tests
+      env:
+        CYPRESS_BASE_URL: "https://doggi-app-frontend.herokuapp.com/"
+      uses: cypress-io/github-action@v2
+      with:
+        wait-on: "https://doggi-app-backend.herokuapp.com/api/v1.0/dogbreeds/"
+        browser: chrome
