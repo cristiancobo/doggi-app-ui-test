@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cristiancobo/doggi-app-ui-test#readme",
   "dependencies": {
-    "cypress": "^7.3.0"
+    "cypress": "^7.3.0",
+    "faker": "^5.5.3"
   }
 }
