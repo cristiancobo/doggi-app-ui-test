@@ -1,5 +1,4 @@
 const { random } = require('faker');
-const { describe } = require('mocha');
 const { BASE_URL, TIME_OUT } = require('../utils/constants');
 
 const new_dog_breed_zero_values = {
@@ -9,9 +8,9 @@ const new_dog_breed_zero_values = {
     lifeExpectancy: 0,
 } 
 
-describe("When the user wants to add a new dog incorrectly", () => {
+describe("When the user wants to add a new dog breed incorrectly", () => {
 
-    describe("When the user wants to add a new dog but values are zero", () => {
+    describe("When the user wants to add a new dog breed but values are zero", () => {
         
         before(() => {
             cy.visit(BASE_URL);
@@ -28,17 +27,21 @@ describe("When the user wants to add a new dog incorrectly", () => {
             cy.get('[data-testid=e2e-select-country-button]').click();
             cy.get('.Mui-selected').click();
             cy.wait(TIME_OUT);
-            cy.get('[data-testid=e2e-dog-breed-colors-button] > .MuiFormControl-root > .MuiInputBase-root > .MuiAutocomplete-endAdornment > .MuiAutocomplete-popupIndicator > .MuiIconButton-label > .MuiSvgIcon-root').click();
+            cy.get('[data-testid=e2e-dog-breed-colors-autocomplete]').click();
             cy.wait(TIME_OUT);
-            //cy.get('#mui-21080-popup').click();
+            cy.get('.MuiAutocomplete-popper li[data-option-index="0"]').click();
+            cy.get('[data-testid=e2e-dog-breed-colors-autocomplete]').click();
             cy.wait(TIME_OUT);
-            cy.get('[data-testid=e2e-dog-breed-nature-autocomplete] > .MuiFormControl-root > .MuiInputBase-root > .MuiAutocomplete-endAdornment > .MuiAutocomplete-popupIndicator > .MuiIconButton-label > .MuiSvgIcon-root').click();
+            cy.get('.MuiAutocomplete-popper li[data-option-index="1"]').click();
+            cy.get('[data-testid=e2e-dog-breed-nature-autocomplete]').click();
             cy.wait(TIME_OUT);
-            //cy.get('.Mui-selected').click();
-            cy.get('[data-testid=e2e-create-update-dialog-button]').click();
+            cy.get('.MuiAutocomplete-popper li[data-option-index="0"]').click();
+            cy.get('[data-testid=e2e-dog-breed-nature-autocomplete]').click();
+            cy.wait(TIME_OUT);
+            cy.get('.MuiAutocomplete-popper li[data-option-index="1"]').click();
         })
 
-        it("Then the create dog should be disabled"), () => {
+        it("Then the create dog button should be disabled"), () => {
             cy.get(
                 '[data-testid=e2e-create-update-dialog-button]'
                 ).should("be.disabled");

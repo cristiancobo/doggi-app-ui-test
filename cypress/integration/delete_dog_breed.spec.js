@@ -1,15 +1,20 @@
 const { random } = require('faker');
-const { describe } = require('mocha');
 const { BASE_URL, TIME_OUT } = require('../utils/constants');
 
 const new_dog_breed = {
     name: random.words(2),
-    weight: random.number(50),
-    height: random.number(50),
-    lifeExpectancy: random.number(20),
+    weight: random.number({
+        'min': 1,
+        'max': 70}),
+    height: random.number({
+        'min': 30,
+        'max': 60}),
+    lifeExpectancy: random.number({
+        'min': 1,
+        'max': 20}),
 } 
 
-describe("Given a created dog", () => {
+describe("Given a created dog breed", () => {
 
     before(() => {
         cy.visit(BASE_URL);
@@ -26,15 +31,30 @@ describe("Given a created dog", () => {
         cy.get('[data-testid=e2e-select-country-button]').click();
         cy.get('.Mui-selected').click();
         cy.wait(TIME_OUT);
+
+        cy.get('[data-testid=e2e-dog-breed-colors-autocomplete]').click();
+        cy.wait(TIME_OUT);
+        cy.get('.MuiAutocomplete-popper li[data-option-index="0"]').click();
+        cy.get('[data-testid=e2e-dog-breed-colors-autocomplete]').click();
+        cy.wait(TIME_OUT);
+        cy.get('.MuiAutocomplete-popper li[data-option-index="1"]').click();
+        cy.get('[data-testid=e2e-dog-breed-nature-autocomplete]').click();
+        cy.wait(TIME_OUT);
+        cy.get('.MuiAutocomplete-popper li[data-option-index="0"]').click();
+        cy.get('[data-testid=e2e-dog-breed-nature-autocomplete]').click();
+        cy.wait(TIME_OUT);
+        cy.get('.MuiAutocomplete-popper li[data-option-index="1"]').click();
+
+        cy.get('[data-testid=e2e-create-update-dialog-button] > .MuiButton-label').click();
     });
 
-    describe("When the user wants to delete the dog", () => {
+    describe("When the user wants to delete the dog breed", () => {
         
         before(() => {
 
         });
 
-        it("Then the dog should not be listed", () => {
+        it("Then the dog breed should not be listed", () => {
 
         });
     });
