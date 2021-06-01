@@ -48,8 +48,7 @@ describe("When the user wants to add a new dog breed", () => {
         cy.get('[data-testid=e2e-create-update-dialog-button] > .MuiButton-label').click();
     })
 
-    it("Then the dog should be listed with the right attributes", () => {
-        //cy.get('.MuiContainer-root > .MuiGrid-container').contains("nth-child",new_dog_breed.name).should("be.visible");
-        cy.get(`[data-testid="${new_dog_breed.name}-container"]`);
+    it("Then the dog breed should be listed", () => {
+        cy.get(`[data-testid="${new_dog_breed.name}"] > .MuiCardHeader-root > .MuiCardHeader-content > .MuiCardHeader-title`).should("be.visible");
     })
 });

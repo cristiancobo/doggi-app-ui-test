@@ -51,11 +51,12 @@ describe("Given a created dog breed", () => {
     describe("When the user wants to delete the dog breed", () => {
         
         before(() => {
-
+            cy.get(`[data-testid="e2e-dog-card-delete-button-${new_dog_breed.name}"]`).click();
+            cy.get('[data-testid=confirm-delete-button] > .MuiButton-label').click();
         });
 
         it("Then the dog breed should not be listed", () => {
-
+            cy.get('.makeStyles-dogsContainer-3 > :nth-child(1) > .MuiContainer-root').contains(`[data-testid="e2e-dog-master-name-${new_dog_breed.name}"]`).should('not.exist');
         });
     });
 });
