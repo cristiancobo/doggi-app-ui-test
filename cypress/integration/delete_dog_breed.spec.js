@@ -25,10 +25,13 @@ describe("Given a created dog breed", () => {
         cy.wait(TIME_OUT);
         cy.get('[data-testid=e2e-breed-dog-name-input]').type(new_dog_breed.name);
         cy.wait(TIME_OUT);
+        cy.get('[data-testid=e2e-breed-dog-weight-input]').clear();
         cy.get('[data-testid=e2e-breed-dog-weight-input]').type(new_dog_breed.weight);
         cy.wait(TIME_OUT);
+        cy.get('[data-testid=e2e-breed-dog-height-input]').clear();
         cy.get('[data-testid=e2e-breed-dog-height-input]').type(new_dog_breed.height);
         cy.wait(TIME_OUT);
+        cy.get('[data-testid=e2e-breed-dog-life-expectancy-input]').clear();
         cy.get('[data-testid=e2e-breed-dog-life-expectancy-input]').type(new_dog_breed.lifeExpectancy);
         cy.wait(TIME_OUT);
         cy.get('[data-testid=e2e-select-country-button]').click();
