@@ -5,13 +5,16 @@ const new_dog_breed = {
     name: random.words(2),
     weight: random.number({
         'min': 1,
-        'max': 70}),
+        'max': 70
+    }),
     height: random.number({
         'min': 30,
-        'max': 60}),
+        'max': 60
+    }),
     lifeExpectancy: random.number({
         'min': 1,
-        'max': 20}),
+        'max': 20
+    }),
 } 
 
 describe("Given a created dog breed", () => {

@@ -5,13 +5,16 @@ const new_dog_breed = {
     name: random.words(2),
     weight: random.number({
         'min': 1,
-        'max': 70}),
+        'max': 70
+    }),
     height: random.number({
         'min': 30,
-        'max': 60}),
+        'max': 60
+    }),
     lifeExpectancy: random.number({
         'min': 1,
-        'max': 20}),
+        'max': 20
+    }),
 } 
 
 describe("Given a created dog breed", () => {
@@ -48,14 +51,16 @@ describe("Given a created dog breed", () => {
         cy.get('[data-testid=e2e-create-update-dialog-button] > .MuiButton-label').click();
     });
 
-    describe("When the user wants to delete the dog breed incorrectly", () => {
+    describe("When the user wants to delete the dog breed but cancels the action", () => {
         
         before(() => {
-
+            cy.get(`[data-testid="e2e-dog-card-delete-button-${new_dog_breed.name}"]`).click();
+            cy.get('[data-testid=cancel-delete-button]').click();
         });
-
-        it("Then the dog breed should not be listed", () => {
-
+    
+        it("Then the dog breed should still be listed", () => {
+            cy.get(`[data-testid="${new_dog_breed.name}"] > .MuiCardHeader-root > .MuiCardHeader-content > .MuiCardHeader-title`).should("be.visible");
         });
+        
     });
 });

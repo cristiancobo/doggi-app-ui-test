@@ -6,7 +6,7 @@ describe("When the user wants to list the existing dogs", () => {
         cy.visit(BASE_URL);
     });
 
-    it("Then there should be more than zero elements", () => {
-        
+    it("Then there should be some elements", () => {
+        cy.get('.MuiContainer-root > .MuiGrid-container').should('have.length.greaterThan', 0);
     })
 });
